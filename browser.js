@@ -22,7 +22,11 @@ function removeElement(){
 }
 
 PubSub.subscribe('next', next)
+PubSub.subscribe('next', prevNotification)
+PubSub.subscribe('trush', trush)
+PubSub.subscribe('trush', trushNotification)
 PubSub.subscribe('prev', prev)
+PubSub.subscribe('prev', prevNotification)
 PubSub.subscribe('togglePlay', togglePlay)
 PubSub.subscribe('toggleLike', toggleLike)
 PubSub.subscribe('toggleLike', likeNotification)
@@ -30,7 +34,9 @@ PubSub.subscribe('toggleLike', likeNotification)
 function next(){
     clickElement($('label[title="下一首"]').children[0])
 }
-
+function trush(){
+    clickElement($('label[title="不再播放"]').children[0])
+}
 function prev(){
     let prevP = $('label[title="上一首"]') || $('label[title="下一首"]');
     clickElement(prevP.children[0])
@@ -45,7 +51,37 @@ function toggleLike(){
     let toggleButton = $('label[title="加红心"]') || $('label[title="取消红心"]')
     clickElement(toggleButton.children[0])
 }
+function prevNotification(type,data){
+    //页面激活时则不提醒
+    if(!document.hidden) return
+    let title = $('.link._3bHLm1OOWrgMRrfiRpBpRz').innerHTML
+    let url = getCover()
+    let notification = {
+        title: '切歌',
+        body: '已切换至下一首'
+    }
+    const myNotification = new window.Notification(notification.title, notification)
 
+    myNotification.onclick = () => {
+        console.log('Notification clicked')
+    }
+}
+function trushNotification(type,data){
+    //页面激活时则不提醒
+    if(!document.hidden) return
+    let title = $('.link._3bHLm1OOWrgMRrfiRpBpRz').innerHTML
+    let url = getCover()
+    let notification = {
+        title: '不在播放',
+        body: title,
+        icon: url
+    }
+    const myNotification = new window.Notification(notification.title, notification)
+
+    myNotification.onclick = () => {
+        console.log('Notification clicked')
+    }
+}
 function likeNotification(type, data){
 
     //页面激活时则不提醒

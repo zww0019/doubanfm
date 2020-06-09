@@ -29,19 +29,21 @@ function createWindow () {
       // titleBarStyle: 'customButtonsOnHover',
       // transparent: true,
       frame: false,
-      icon: path.join(__dirname, 'build/icon.icns')
+      //icon: path.join(__dirname, 'build/icon.icns')
   })
 
   mainWindow.loadURL('https://douban.fm');
+  //mainWindow.webContents.openDevTools();
 
     mainWindow.webContents.on('did-finish-load', ()=>{
         let isFocus = mainWindow.isVisible(),
             json = JSON.stringify({isFocus: isFocus}),
             operateObj = {
-                'CommandOrControl+0': 'window.PubSub.publish("next")',
-                'CommandOrControl+9': 'window.PubSub.publish("prev")',
-                'CommandOrControl+7': `window.PubSub.publish("toggleLike",${json})`,
-                'CommandOrControl+8': 'window.PubSub.publish("togglePlay")',
+                'CommandOrControl+Right': 'window.PubSub.publish("next")',
+                'CommandOrControl+Down': 'window.PubSub.publish("trush")',
+                'CommandOrControl+Left': 'window.PubSub.publish("prev")',
+                'CommandOrControl+Up': 'window.PubSub.publish("toggleLike")',
+                'CommandOrControl+Return': 'window.PubSub.publish("togglePlay")',
             }
 
         let shortcut = (key, code) => {

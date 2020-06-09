@@ -9,7 +9,8 @@
     "build": "electron-packager . --overwrite --platform=darwin --arch=x64 --icon=build/icon.icns --prune=true --out=release-builds",
     "build:macos": "electron-packager . --overwrite --asar --out=dist --ignore='^media$' --platform=darwin --arch=x64 --icon=build/icon.icns --sign='Developer ID Application: Alex Liu' && cd dist/FM-darwin-x64 && zip -ryXq9 ../FM-osx-${npm_package_version}.zip FM.app",
     "pack": "electron-builder --dir",
-    "dist": "electron-builder"
+    "dist": "electron-builder",
+    "build:mac": "node_modules/.bin/electron-builder -m"
   },
   "build": {
     "appId": "com.example.app",
