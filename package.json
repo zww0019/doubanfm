@@ -29,7 +29,8 @@
   "author": "GitHub",
   "license": "CC0-1.0",
   "dependencies": {
-    "element-ready": "^2.1.0"
+    "element-ready": "^2.1.0",
+    "node-machine-id": "^1.1.12"
   },
   "devDependencies": {
     "electron": "^1.4.10",
