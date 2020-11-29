@@ -33,7 +33,7 @@ function createWindow () {
   })
 
   mainWindow.loadURL('https://douban.fm');
-  //mainWindow.webContents.openDevTools();
+    mainWindow.webContents.openDevTools();
 
     mainWindow.webContents.on('did-finish-load', ()=>{
         let isFocus = mainWindow.isVisible(),
@@ -43,7 +43,7 @@ function createWindow () {
                 'CommandOrControl+Down': 'window.PubSub.publish("trush")',
                 'CommandOrControl+Left': 'window.PubSub.publish("prev")',
                 'CommandOrControl+Up': 'window.PubSub.publish("toggleLike")',
-                'CommandOrControl+Return': 'window.PubSub.publish("togglePlay")',
+                'CommandOrControl+Return': 'window.PubSub.publish("togglePlay")'
             }
 
         let shortcut = (key, code) => {
@@ -56,8 +56,8 @@ function createWindow () {
                 shortcut(k, operateObj[k])
             }
         }
-
         ipcMain.on('urlchange', function(event){
+            console.log("asdf")
             event.sender.send('url', {
                 canGoback: mainWindow.webContents.canGoBack()
             });

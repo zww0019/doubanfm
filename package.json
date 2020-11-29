@@ -16,6 +16,9 @@
     "appId": "com.example.app",
     "mac": {
       "category": "Development"
+    },
+    "electronDownload": {
+      "mirror": "https://npm.taobao.org/mirrors/electron/"
     }
   },
   "repository": "https://github.com/electron/electron-quick-start",
@@ -34,6 +37,6 @@
   },
   "devDependencies": {
     "electron": "^1.4.10",
-    "electron-packager": "^8.0.0"
+    "electron-packager": "^12.1.0"
   }
 }
