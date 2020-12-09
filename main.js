@@ -33,7 +33,7 @@ function createWindow () {
   })
 
   mainWindow.loadURL('https://douban.fm');
-    mainWindow.webContents.openDevTools();
+    //mainWindow.webContents.openDevTools();
 
     mainWindow.webContents.on('did-finish-load', ()=>{
         let isFocus = mainWindow.isVisible(),
